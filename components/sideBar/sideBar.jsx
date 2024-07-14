@@ -1,0 +1,76 @@
+"use client";
+
+import {
+  Clock,
+  Compass,
+  Home,
+  LogOut,
+  Settings,
+  SquareCheck,
+  SquarePlus,
+  Star,
+} from "lucide-react";
+import style from "./sideBar.module.css";
+import React, { useState } from "react";
+
+const SideBar = () => {
+  const [active, setActive] = useState("");
+  const menu = [
+    {
+      compName: <Home />,
+      label: "Home",
+    },
+    {
+      compName: <Compass />,
+      label: "Discover",
+    },
+    {
+      compName: <Clock />,
+      label: "Recents",
+    },
+    {
+      compName: <Star />,
+      label: "Top Rated",
+    },
+    {
+      compName: <SquarePlus />,
+      label: "Wishlist",
+    },
+    {
+      compName: <SquareCheck />,
+      label: "Completed",
+    },
+    {
+      compName: <Settings />,
+      label: "Settings",
+    },
+    {
+      compName: <LogOut />,
+      label: "Log Out",
+    },
+  ];
+  return (
+    <div className="h-screen bg-black text-white w-44">
+      <div>
+        <span className="pb-4 block ps-4">Menu</span>
+        <div className="li_style_none flex flex-col gap-4 ps-4">
+          {menu.map((el) => (
+            <li
+              key={el.compName}
+              className={`cursor-pointer hover:text-yellow-500 hover:border-r-4 border-yellow-500 ${
+                active === el.label ? style.activeSideBarMenu : ""
+              }`}
+              onClick={() => setActive(el.label)}
+            >
+              <span className="flex gap-2">
+                {el.compName} {el.label}
+              </span>
+            </li>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SideBar;
