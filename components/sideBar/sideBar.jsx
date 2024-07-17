@@ -50,14 +50,17 @@ const SideBar = () => {
     },
   ];
   return (
-    <div className="h-screen bg-black text-white w-44">
+    <div className="h-screen bg-black text-white flex-auto">
+      <div className=" mb-5">
+        <img src="/Logo.svg" className="ms-2" />
+      </div>
       <div>
-        <span className="pb-4 block ps-4">Menu</span>
-        <div className="li_style_none flex flex-col gap-4 ps-4">
+        <span className="pb-5 block ps-4">Menu</span>
+        <div className="li_style_none flex flex-col gap-3 ps-4">
           {menu.map((el) => (
             <li
               key={el.compName}
-              className={`cursor-pointer hover:text-yellow-500 hover:border-r-4 border-yellow-500 ${
+              className={`cursor-pointer hover:text-yellow-500 hover:border-r-4 border-yellow-500 py-2 ${
                 active === el.label ? style.activeSideBarMenu : ""
               }`}
               onClick={() => setActive(el.label)}

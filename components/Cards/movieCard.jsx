@@ -1,0 +1,38 @@
+import { Plus } from "lucide-react";
+import React from "react";
+
+const MovieCard = () => {
+  return (
+    <div
+      style={{
+        backgroundImage: "url(/Picture.svg)",
+        height: 300,
+        width: 240,
+      }}
+      className="rounded-2xl p-2"
+    >
+      <div className="flex flex-col h-full justify-between">
+        <div className="mt-3 ms-3">
+          <h4>Loki</h4>
+          <span>Rating</span>
+        </div>
+        <div>
+          <div className="flex justify-between mb-2 items-center">
+            <span className="text-sm">3 Ep</span>
+            <span className="text-sm">super hero</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="p-3 wishlistBtn cursor-pointer">
+              <Plus />
+            </span>
+            <button className="bg-yellow-500 px-10 py-2 rounded-xl text-black font-semibold">
+              More info
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieCard;
