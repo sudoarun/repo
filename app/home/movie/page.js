@@ -4,14 +4,23 @@ import { ChevronLeft } from "lucide-react";
 import React from "react";
 
 const Page = () => {
+  const backFunction = () => {
+    history.back();
+  };
   return (
     <div className="bg-black text-white p-3">
       <div className="container ">
         <div className="flex gap-3 items-center">
-          <span className="transParentBtn p-2 cursor-pointer">
+          <span
+            className="transParentBtn p-2 cursor-pointer"
+            onClick={backFunction}
+          >
             <ChevronLeft />
           </span>
-          <span className="font-semibold text-yellow-500 cursor-pointer">
+          <span
+            className="font-semibold text-yellow-500 cursor-pointer"
+            onClick={backFunction}
+          >
             Back home
           </span>
         </div>

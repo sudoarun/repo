@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./css/navHome.module.css";
+import Link from "next/link";
 const NavHome = () => {
   return (
     <div
@@ -8,17 +9,23 @@ const NavHome = () => {
       <li
         className={`hover:text-yellow-500 cursor-pointer ${style.hover_underline}`}
       >
-        <span className="py-2">Movies</span>
+        <Link href={"/home/movie"} className="py-2">
+          Movies
+        </Link>
       </li>
       <li
         className={`hover:text-yellow-500 cursor-pointer ${style.hover_underline}`}
       >
-        <span className="py-2">TV Shows</span>
+        <Link href={"/home/movie"} className="py-2">
+          TV Shows
+        </Link>
       </li>
       <li
         className={`hover:text-yellow-500 cursor-pointer ${style.hover_underline}`}
       >
-        <span className="py-2">Anime</span>
+        <Link href={"/home/movie"} className="py-2">
+          Anime
+        </Link>
       </li>
       <li>
         <input
