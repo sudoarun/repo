@@ -8,6 +8,7 @@ const Page = () => {
   };
   const bgImageURL =
     "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/7cqKGQMnNabzOpi7qaIgZvQ7NGV.jpg";
+
   return (
     <section className="text-white">
       <div
@@ -40,7 +41,7 @@ const Page = () => {
                 <h1 className="font-semibold text-5xl text-white mb-4">Loki</h1>
                 <RatingComp />
                 <h6 className="text-white mt-3">10M+ Views</h6>
-                <span className="text-white font-semibold">IMDB logo</span>
+                <img src="/imdb.svg" className="my-3" />
                 <p>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's

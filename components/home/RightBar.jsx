@@ -1,5 +1,6 @@
 import { Bell, User } from "lucide-react";
 import React from "react";
+import SmallCard from "../Cards/SmallCard";
 
 const RightBar = () => {
   return (
@@ -14,16 +15,16 @@ const RightBar = () => {
         </span>
       </div>
       <div>
-        <h3 className="font-semibold">Continue</h3>
-        <span>Card</span>
+        <h3 className="font-semibold my-5">Continue</h3>
+        <SmallCard />
       </div>
       <div>
-        <h3 className="font-semibold">Top Rated</h3>
-        <span>Card</span>
+        <h3 className="font-semibold my-5">Top Rated</h3>
+        <SmallCard />
       </div>
       <div>
-        <h3 className="font-semibold">Genres</h3>
-        <span>Card</span>
+        <h3 className="font-semibold my-5">Genres</h3>
+        <SmallCard />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 .li_style_none {
   list-style: none;
 }
-.hover_underline:hover > span {
+.hover_underline:hover > a {
   border-bottom: 2px solid #eab308;
 }
