@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import React from "react";
+import RatingComp from "../Rating/RatingComp";
 
 const MovieCard = () => {
   return (
@@ -13,8 +14,8 @@ const MovieCard = () => {
     >
       <div className="flex flex-col h-full justify-between">
         <div className="mt-3 ms-3">
-          <h4>Loki</h4>
-          <span>Rating</span>
+          <h4 className="font-semibold">Loki</h4>
+          <RatingComp />
         </div>
         <div>
           <div className="flex justify-between mb-2 items-center">
@@ -22,7 +23,7 @@ const MovieCard = () => {
             <span className="text-sm">super hero</span>
           </div>
           <div className="flex justify-between">
-            <span className="p-3 wishlistBtn cursor-pointer">
+            <span className="p-3 transParentBtn cursor-pointer">
               <Plus />
             </span>
             <button className="bg-yellow-500 px-10 py-2 rounded-xl text-black font-semibold">

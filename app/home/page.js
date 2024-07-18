@@ -1,5 +1,6 @@
 import MovieCard from "@/components/Cards/movieCard";
 import NavHome from "@/components/home/NavHome";
+import RightBar from "@/components/home/RightBar";
 import SideBar from "@/components/sideBar/sideBar";
 import React from "react";
 
@@ -26,13 +27,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="bg-black text-white flex-auto w-1/5">
-          <div>
-            <span>logo</span>
-            <span>Arun Thakur</span>
-            <span>logo</span>
-          </div>
-        </div>
+        <RightBar />
       </div>
     </section>
   );
