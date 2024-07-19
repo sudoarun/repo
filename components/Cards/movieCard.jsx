@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import React from "react";
 import RatingComp from "../Rating/RatingComp";
+import Link from "next/link";
 
 const MovieCard = () => {
   return (
@@ -22,13 +23,16 @@ const MovieCard = () => {
             <span className="text-sm">3 Ep</span>
             <span className="text-sm">super hero</span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <span className="p-3 transParentBtn cursor-pointer">
               <Plus />
             </span>
-            <button className="bg-yellow-500 px-10 py-2 rounded-xl text-black font-semibold">
+            <Link
+              href={"/home/watch"}
+              className="bg-yellow-500 px-10 py-3 rounded-xl text-black font-semibold"
+            >
               More info
-            </button>
+            </Link>
           </div>
         </div>
       </div>
