@@ -1,7 +1,10 @@
+"use client";
 import MovieCard from "@/components/Cards/movieCard";
+import MoviePoster from "@/components/home/moviePoster";
 import NavHome from "@/components/home/NavHome";
 import RightBar from "@/components/home/RightBar";
 import SideBar from "@/components/sideBar/sideBar";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import React from "react";
 
 const Page = () => {
@@ -15,7 +18,20 @@ const Page = () => {
               <NavHome />
             </div>
             <div className="flex justify-center mt-3">
-              <img src="/Picture.svg" />
+              <Splide className="w-full customBtnCarousel px-3">
+                <SplideSlide>
+                  <MoviePoster />
+                </SplideSlide>
+                <SplideSlide>
+                  <MoviePoster />
+                </SplideSlide>
+                <SplideSlide>
+                  <MoviePoster />
+                </SplideSlide>
+                <SplideSlide>
+                  <MoviePoster />
+                </SplideSlide>
+              </Splide>
             </div>
             <div>
               <h1 className="ms-4 my-6 text-2xl">Popular on Honey Movies</h1>

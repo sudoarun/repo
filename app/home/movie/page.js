@@ -41,7 +41,7 @@ const Page = () => {
         <div className="py-6 ps-4 pb-2">
           <h3 className="font-semibold text-xl">Top Rated Movies</h3>
           <div className="py-5 flex gap-8">
-            <Splide options={slider} className="w-full">
+            <Splide options={slider} className="w-full movieScroll">
               {state?.map((el) => (
                 <SplideSlide>
                   <MoviePosterComp />

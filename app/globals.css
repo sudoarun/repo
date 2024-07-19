@@ -10,20 +10,32 @@ body {
 }
 .transParentBtn {
   background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border-radius: 10px;
 }
-.splide__arrows {
+
+.customBtnCarousel > .splide__arrows > button:first-child {
+  border-radius: 5px;
+  left: 30px;
+}
+.customBtnCarousel > .splide__arrows > button:last-child {
+  border-radius: 5px;
+  right: 30px;
+}
+.customBtnCarousel > ul > li > .is-active {
+  background: #f1a548;
+}
+
+.movieScroll > .splide__arrows {
   position: absolute;
   bottom: -30px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.splide__arrows > button:last-child {
+.movieScroll > .splide__arrows > button:last-child {
   right: -3em !important;
 }
-.splide__arrows > button:first-child {
+.movieScroll > .splide__arrows > button:first-child {
   left: -2em !important;
 }

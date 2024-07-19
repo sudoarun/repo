@@ -6,10 +6,7 @@ import Link from "next/link";
 
 const MoviePosterComp = () => {
   return (
-    <Link
-      href={"/home/movie/watch"}
-      style={{ width: "300px", height: "420px" }}
-    >
+    <Link href={"/home/watch"} style={{ width: "300px", height: "420px" }}>
       <div className="relative">
         <Image
           className="rounded-md"
