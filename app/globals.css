@@ -15,3 +15,15 @@ body {
   -webkit-backdrop-filter: blur(6px);
   border-radius: 10px;
 }
+.splide__arrows {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.splide__arrows > button:last-child {
+  right: -3em !important;
+}
+.splide__arrows > button:first-child {
+  left: -2em !important;
+}
