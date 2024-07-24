@@ -2,20 +2,25 @@ import { Plus } from "lucide-react";
 import React from "react";
 import RatingComp from "../Rating/RatingComp";
 import Link from "next/link";
+import config from "@/utils/config";
 
-const MovieCard = () => {
+const MovieCard = ({ data }) => {
+  const { title, poster_path, id } = data;
   return (
     <div
       style={{
-        backgroundImage: "url(/Picture.svg)",
+        backgroundImage: `url(${config.imgBaseURL}${poster_path})`,
         height: 300,
-        width: 240,
+        width: "auto",
+        backgroundColor: "#1e1818b3",
+        backgroundBlendMode: "multiply",
+        backgroundSize: "cover",
       }}
       className="rounded-2xl p-2"
     >
       <div className="flex flex-col h-full justify-between">
         <div className="mt-3 ms-3">
-          <h4 className="font-semibold">Loki</h4>
+          <h4 className="font-semibold">{title}</h4>
           <RatingComp />
         </div>
         <div>
@@ -23,13 +28,13 @@ const MovieCard = () => {
             <span className="text-sm">3 Ep</span>
             <span className="text-sm">super hero</span>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center gap-2">
             <span className="p-3 transParentBtn cursor-pointer">
               <Plus />
             </span>
             <Link
-              href={"/home/watch"}
-              className="bg-yellow-500 px-10 py-3 rounded-xl text-black font-semibold"
+              href={`/home/watch?id=${id}`}
+              className="bg-yellow-500 w-full text-center py-3 rounded-xl text-black font-semibold"
             >
               More info
             </Link>

@@ -39,3 +39,19 @@ body {
 .movieScroll > .splide__arrows > button:first-child {
   left: -2em !important;
 }
+
+.rightSlidesCustomBtn > .splide__arrows {
+  position: absolute;
+  top: -30px;
+}
+.rightSlidesCustomBtn > .splide__arrows > button:first-child {
+  left: 80px;
+  background: none;
+}
+.rightSlidesCustomBtn > .splide__arrows > button:last-child {
+  left: 110px;
+  background: none;
+}
+.rightSlidesCustomBtn > .splide__arrows > button > svg {
+  fill: #eab308;
+}

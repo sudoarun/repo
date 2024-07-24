@@ -1,25 +1,22 @@
 "use client";
 import MoviePosterComp from "@/components/moviePage/MoviePosterComp";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { getTopRatedMovies } from "@/utils/api";
 import { ChevronLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
-  const [state, setState] = useState([]);
-  let slider = {
-    drag: "free",
-    gap: "2rem",
-    perPage: 4.5,
-    // arrows: false,
-    pagination: false,
-  };
+  const [state, setState] = useState(null);
+
   const backFunction = () => {
     history.back();
   };
+  const getTopMovies = () => {
+    getTopRatedMovies()
+      .then((res) => setState(res.data))
+      .catch((e) => console.log(e));
+  };
   useEffect(() => {
-    let count = 56;
-    let array = Array.from(Array(count).keys());
-    setState(array);
+    getTopMovies();
   }, []);
   return (
     <div className="bg-black text-white p-3">
@@ -39,15 +36,13 @@ const Page = () => {
           </span>
         </div>
         <div className="py-6 ps-4 pb-2">
-          <h3 className="font-semibold text-xl">Top Rated Movies</h3>
-          <div className="py-5 flex gap-8">
-            <Splide options={slider} className="w-full movieScroll">
-              {state?.map((el) => (
-                <SplideSlide>
-                  <MoviePosterComp />
-                </SplideSlide>
-              ))}
-            </Splide>
+          <h3 className="font-semibold text-3xl">Top Rated Movies</h3>
+          <div className="py-5 gap-8 grid grid-cols-4">
+            {state?.results?.map((el) => (
+              <div key={el?.id}>
+                <MoviePosterComp data={el} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

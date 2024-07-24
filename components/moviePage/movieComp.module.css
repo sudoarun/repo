@@ -1,0 +1,9 @@
+.moviePosterCompBottom {
+  height: 0px;
+  visibility: hidden;
+}
+
+.moviePosterComp:hover .moviePosterCompBottom {
+  height: 85px;
+  visibility: inherit;
+}

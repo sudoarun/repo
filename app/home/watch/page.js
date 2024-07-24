@@ -1,24 +1,43 @@
 "use client";
+import Loader from "@/components/loader/loader";
 import RatingComp from "@/components/Rating/RatingComp";
+import { getMoviesById } from "@/utils/api";
+import config from "@/utils/config";
 import { ChevronLeft } from "lucide-react";
-import React from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 const Page = () => {
+  const [state, setState] = useState(null);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const backFunction = () => {
     history.back();
   };
   const bgImageURL =
     "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/7cqKGQMnNabzOpi7qaIgZvQ7NGV.jpg";
 
+  useEffect(() => {
+    if (id) {
+      getMoviesById(id)
+        .then((res) => {
+          setState(res.data);
+        })
+        .catch((e) => console.log(e));
+    }
+  }, [id]);
+  if (!state) {
+    return <Loader />;
+  }
   return (
-    <section className="text-white">
+    <section className="text-white h-screen">
       <div
         style={{
-          background: `url(${bgImageURL})`,
-          backgroundSize: "cover",
+          backgroundImage: `url(${config.imgLargeBaseURL}${state?.backdrop_path})`,
           backgroundColor: "#1e1818b3",
           backgroundBlendMode: "multiply",
+          backgroundSize: "cover",
         }}
-        className="h-screen w-screen"
+        className="h-full w-screen "
       >
         <div className="pt-10 ps-10">
           <div className="flex gap-3 items-center">
@@ -38,17 +57,14 @@ const Page = () => {
           <div className="mt-5  ">
             <div className="grid grid-cols-2 place-items-center">
               <div>
-                <h1 className="font-semibold text-5xl text-white mb-4">Loki</h1>
+                <h1 className="font-semibold text-5xl text-white mb-2">
+                  {state?.title}
+                </h1>
+                <h1 className="text-sm text-gray-400 mb-4">{state?.tagline}</h1>
                 <RatingComp />
                 <h6 className="text-white mt-3">10M+ Views</h6>
                 <img src="/imdb.svg" className="my-3" />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.
-                </p>
+                <p>{state?.overview}</p>
                 <div className="flex gap-5 mt-5">
                   <button className="transParentBtn px-5 py-2 rounded hover:bg-transparent hover:border hover:border-white">
                     Wishlist
@@ -63,7 +79,7 @@ const Page = () => {
                   height={350}
                   width={280}
                   className="rounded-md"
-                  src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/2zmTngn1tYC1AvfnrFLhxeD82hz.jpg"
+                  src={`${config.imgBaseURL}${state?.poster_path}`}
                 />
               </div>
             </div>
