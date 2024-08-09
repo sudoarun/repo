@@ -12,7 +12,7 @@ const Stream = ({ id }) => {
     <div className="h-screen flex justify-center items-center">
       <div className="w-[70%] h-300 sm:h-[65%]">
         <iframe
-          src={`https://vidsrc.me/${id}`}
+          src={`https://www.2embed.cc/embed/${id}`}
           width="100%"
           height="100%"
           allowFullScreen
