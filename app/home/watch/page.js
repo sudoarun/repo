@@ -34,7 +34,7 @@ const Page = () => {
     <section className="text-white h-screen">
       <div
         style={{
-          backgroundImage: `url(${config.imgLargeBaseURL}${state?.backdrop_path})`,
+          backgroundImage: `url(${config.imgExtremLargeBaseURL}${state?.backdrop_path})`,
           backgroundColor: "#1e1818b3",
           backgroundBlendMode: "multiply",
           backgroundSize: "cover",

@@ -1,11 +1,18 @@
 "use client";
 import MoviePosterComp from "@/components/moviePage/MoviePosterComp";
-import { getTopRatedMovies } from "@/utils/api";
+import {
+  getNowPlayingMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+} from "@/utils/api";
 import { ChevronLeft } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const [state, setState] = useState(null);
+  const params = useSearchParams();
+  const category = params.get("category");
 
   const backFunction = () => {
     history.back();
@@ -15,9 +22,35 @@ const Page = () => {
       .then((res) => setState(res.data))
       .catch((e) => console.log(e));
   };
+  const getNowPlaying = () => {
+    getNowPlayingMovies()
+      .then((res) => setState(res.data))
+      .catch((e) => console.log(e));
+  };
+  const getUpcoming = () => {
+    getUpcomingMovies()
+      .then((res) => setState(res.data))
+      .catch((e) => console.log(e));
+  };
+
   useEffect(() => {
+    if (category) {
+      if (category === "top-rated") {
+        getTopMovies();
+        return;
+      } else if (category === "now-playing") {
+        getNowPlaying();
+        return;
+      } else if (category === "upcoming") {
+        getUpcoming();
+        return;
+      } else {
+        return;
+      }
+    }
     getTopMovies();
-  }, []);
+  }, [category]);
+  console.log(category);
   return (
     <div className="bg-black text-white p-3">
       <div className="container pb-5">

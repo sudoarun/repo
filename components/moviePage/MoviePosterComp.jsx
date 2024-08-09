@@ -5,7 +5,7 @@ import Link from "next/link";
 import config from "@/utils/config";
 import style from "./movieComp.module.css";
 const MoviePosterComp = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <Link
       href={`/home/watch?id=${data?.id}`}

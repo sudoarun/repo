@@ -4,34 +4,53 @@ import MoviePoster from "@/components/home/moviePoster";
 import NavHome from "@/components/home/NavHome";
 import RightBar from "@/components/home/RightBar";
 import SideBar from "@/components/sideBar/sideBar";
+import {
+  addDiscoverMovies,
+  addUpComingMovies,
+} from "@/redux/slice/globalState";
 import { getMovies, getUpcomingMovies } from "@/utils/api";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Page = () => {
   const [movies, setMovies] = useState([]);
-  const [getMoviesData, setGetMoviesData] = useState("");
   const [upcoming, setUpComing] = useState([]);
+  const dispatch = useDispatch();
+  const { upComingMovies, discoverMovies } = useSelector(
+    (state) => state.state.globalState
+  );
+
   const getMoviesFunc = () => {
+    if (discoverMovies?.results?.length > 0) {
+      setMovies(discoverMovies?.results);
+      return;
+    }
     getMovies()
       .then((data) => {
         setMovies(data?.data?.results);
-        setGetMoviesData(data);
+        dispatch(addDiscoverMovies(data?.data));
       })
       .catch((e) => console.log(e));
   };
-  const upComingMovies = () => {
+  const upComingMovie = () => {
+    if (upComingMovies?.results?.length > 0) {
+      setUpComing(upComingMovies?.results);
+      return;
+    }
     getUpcomingMovies()
       .then((res) => {
         setUpComing(res?.data?.results);
+        dispatch(addUpComingMovies(res?.data));
       })
       .catch((e) => console.log(e));
   };
 
   useEffect(() => {
     getMoviesFunc();
-    upComingMovies();
-  }, []);
+    upComingMovie();
+  }, [upComingMovies, discoverMovies]);
+
   return (
     <section className="h-screen">
       <div class="grid md:grid-cols-5 grid-cols-1  h-full">

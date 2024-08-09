@@ -22,6 +22,16 @@ export const getMovies = () => {
     },
   });
 };
+export const getDiscoverTvShows = () => {
+  return axios({
+    method: "GET",
+    url: `${config.baseURL}discover/tv`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${config.token}`,
+    },
+  });
+};
 export const getMoviesById = (id) => {
   return axios({
     method: "GET",
@@ -48,6 +58,18 @@ export const getTopRatedMovies = (page) => {
   return axios({
     method: "GET",
     url: `${config.baseURL}movie/top_rated?language=en-US&page=${
+      page ? page : 1
+    }`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${config.token}`,
+    },
+  });
+};
+export const getNowPlayingMovies = (page) => {
+  return axios({
+    method: "GET",
+    url: `${config.baseURL}movie/now_playing?language=en-US&page=${
       page ? page : 1
     }`,
     headers: {
