@@ -1,10 +1,6 @@
 "use client";
 import MoviePosterComp from "@/components/moviePage/MoviePosterComp";
-import {
-  getNowPlayingMovies,
-  getTopRatedMovies,
-  getUpcomingMovies,
-} from "@/utils/api";
+import { getPopularTvShows } from "@/utils/api";
 import { ChevronLeft } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -17,39 +13,15 @@ const Page = () => {
   const backFunction = () => {
     history.back();
   };
-  const getTopMovies = () => {
-    getTopRatedMovies()
-      .then((res) => setState(res.data))
-      .catch((e) => console.log(e));
-  };
-  const getNowPlaying = () => {
-    getNowPlayingMovies()
-      .then((res) => setState(res.data))
-      .catch((e) => console.log(e));
-  };
-  const getUpcoming = () => {
-    getUpcomingMovies()
+  const getTvShows = () => {
+    getPopularTvShows()
       .then((res) => setState(res.data))
       .catch((e) => console.log(e));
   };
 
   useEffect(() => {
-    if (category) {
-      if (category === "top-rated") {
-        getTopMovies();
-        return;
-      } else if (category === "now-playing") {
-        getNowPlaying();
-        return;
-      } else if (category === "upcoming") {
-        getUpcoming();
-        return;
-      } else {
-        return;
-      }
-    }
-    getTopMovies();
-  }, [category]);
+    getTvShows();
+  }, []);
   return (
     <div className="bg-black text-white p-3">
       <div className="container pb-5">
@@ -68,7 +40,7 @@ const Page = () => {
           </span>
         </div>
         <div className="py-6 ps-4 pb-2">
-          <h3 className="font-semibold text-3xl">Top Rated Movies</h3>
+          <h3 className="font-semibold text-3xl">Popular TV Shows</h3>
           <div className="py-5 gap-3 grid grid-cols-2 md:grid-cols-4 md:gap-5">
             {state?.results?.map((el) => (
               <div key={el?.id}>

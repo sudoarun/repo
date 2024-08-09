@@ -5,7 +5,7 @@ import Link from "next/link";
 import config from "@/utils/config";
 
 const MovieCard = ({ data }) => {
-  const { title, poster_path, id } = data;
+  const { title, name, poster_path, id } = data;
   return (
     <div
       style={{
@@ -20,7 +20,9 @@ const MovieCard = ({ data }) => {
     >
       <div className="flex flex-col h-full justify-between">
         <div className="mt-3 ms-3">
-          <h4 className="font-semibold sm:text-sm md:text-xl">{title}</h4>
+          <h4 className="font-semibold sm:text-sm md:text-xl">
+            {title ? title : name}
+          </h4>
           <RatingComp />
         </div>
         <div>

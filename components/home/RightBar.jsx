@@ -4,7 +4,6 @@ import SmallCard from "../Cards/SmallCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import genres from "@/utils/genres";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { getDiscoverTvShows, getTopRatedMovies } from "@/utils/api";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,7 +12,6 @@ import {
 } from "@/redux/slice/globalState";
 
 const RightBar = () => {
-  const router = useRouter();
   const { topRatedMovies, discoverTVShows } = useSelector(
     (state) => state.state.globalState
   );
@@ -32,18 +30,18 @@ const RightBar = () => {
       })
       .catch((e) => console.log(e));
   };
-  // const getTvShows = () => {
-  //   if (discoverTVShows?.results?.length > 0) {
-  //     setTvShows(discoverTVShows?.results);
-  //     return;
-  //   }
-  //   getDiscoverTvShows()
-  //     .then((res) => {
-  //       setTvShows(res?.data?.results);
-  //       dispatch(addDiscoverTvShows(res?.data));
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
+  const getTvShows = () => {
+    if (discoverTVShows?.results?.length > 0) {
+      setTvShows(discoverTVShows?.results);
+      return;
+    }
+    getDiscoverTvShows()
+      .then((res) => {
+        setTvShows(res?.data?.results);
+        dispatch(addDiscoverTvShows(res?.data));
+      })
+      .catch((e) => console.log(e));
+  };
   const slides = {
     perPage: 1.3,
     perMove: 1,
@@ -52,7 +50,7 @@ const RightBar = () => {
   };
   useEffect(() => {
     getTopRated();
-    // getTvShows();
+    getTvShows();
   }, [topRatedMovies, discoverTVShows]);
 
   return (
@@ -93,8 +91,16 @@ const RightBar = () => {
           ))}
         </Splide>
       </div>
-      {/* <div>
-        <h3 className="font-semibold my-5">TV Shows</h3>
+      <div className="mt-8">
+        <div className="flex justify-between items-center">
+          <h3 className="font-semibold my-5">TV Shows</h3>
+          <Link href={"/home/tv-shows"} className="block pe-4">
+            <span className="flex items-center">
+              <span className="block text-sm text-gray-400">See More</span>{" "}
+              <ChevronRight />
+            </span>
+          </Link>
+        </div>
         <Splide options={slides} className="w-full rightSlidesCustomBtn">
           {tvShows?.map((el) => (
             <SplideSlide key={el.id}>
@@ -107,7 +113,7 @@ const RightBar = () => {
             </SplideSlide>
           ))}
         </Splide>
-      </div> */}
+      </div>
     </div>
   );
 };

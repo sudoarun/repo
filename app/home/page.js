@@ -10,12 +10,14 @@ import {
 } from "@/redux/slice/globalState";
 import { getMovies, getUpcomingMovies } from "@/utils/api";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Page = () => {
   const [movies, setMovies] = useState([]);
   const [upcoming, setUpComing] = useState([]);
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
   const dispatch = useDispatch();
   const { upComingMovies, discoverMovies } = useSelector(
     (state) => state.state.globalState
@@ -53,12 +55,12 @@ const Page = () => {
 
   return (
     <section className="h-screen">
-      <div class="grid md:grid-cols-5 grid-cols-1  h-full">
-        <div class="col-span-1 pt-8 hidden md:block relative">
-          <SideBar />
+      <div className="grid md:grid-cols-5 grid-cols-1  h-full">
+        <div className="col-span-1 pt-8 hidden md:block  relative">
+          {!isMobile && <SideBar />}
         </div>
 
-        <div class="col-span-3 pt-8 ">
+        <div className="col-span-3 pt-8 ">
           <div className="bg-black text-white px-4 w-full">
             <div>
               <NavHome />
@@ -73,7 +75,7 @@ const Page = () => {
               </Splide>
             </div>
             <div>
-              <h1 className="ms-4 my-6 text-2xl">Popular on Honey Movies</h1>
+              <h1 className="ms-4 my-6 text-2xl">Trending on Honey Movies</h1>
               <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
                 {movies?.map((el) => (
                   <MovieCard key={el.id} data={el} />
@@ -82,9 +84,8 @@ const Page = () => {
             </div>
           </div>
         </div>
-
-        <div class="col-span-1 pt-8 hidden md:block relative">
-          <RightBar />
+        <div className="col-span-1 pt-8 hidden md:block relative">
+          {!isMobile && <RightBar />}
         </div>
       </div>
     </section>

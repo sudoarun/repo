@@ -8,6 +8,7 @@ const globalState = createSlice({
       upComingMovies: {},
       discoverMovies: {},
       discoverTVShows: {},
+      trendingMovies: {},
     },
   },
   name: "globalState",
@@ -28,6 +29,9 @@ const globalState = createSlice({
     addDiscoverTvShows: (state, payload) => {
       state.globalState.discoverTVShows = payload.payload;
     },
+    addTrendingMovies: (state, payload) => {
+      state.globalState.trendingMovies = payload.payload;
+    },
   },
 });
 export const {
@@ -36,6 +40,7 @@ export const {
   addUpComingMovies,
   addDiscoverMovies,
   addDiscoverTvShows,
+  addTrendingMovies,
 } = globalState.actions;
 
 export default globalState.reducer;

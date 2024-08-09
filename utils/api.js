@@ -12,10 +12,31 @@ export const getgeneres = () => {
     },
   });
 };
+
 export const getMovies = () => {
   return axios({
     method: "GET",
     url: `${config.baseURL}discover/movie`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${config.token}`,
+    },
+  });
+};
+export const getPopularTvShows = () => {
+  return axios({
+    method: "GET",
+    url: `${config.baseURL}tv/popular?language=en-US&page=1`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${config.token}`,
+    },
+  });
+};
+export const getTrendingAll = () => {
+  return axios({
+    method: "GET",
+    url: `${config.baseURL}trending/all/day?language=en-US`,
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${config.token}`,
