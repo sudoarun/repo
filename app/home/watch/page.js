@@ -1,15 +1,17 @@
 "use client";
 import Loader from "@/components/loader/loader";
 import RatingComp from "@/components/Rating/RatingComp";
+import Stream from "@/components/stream/stream";
 import { getMoviesById } from "@/utils/api";
 import config from "@/utils/config";
 import { ChevronLeft } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 const Page = () => {
   const [state, setState] = useState(null);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const router = useRouter();
   const backFunction = () => {
     history.back();
   };
@@ -69,7 +71,10 @@ const Page = () => {
                   <button className="transParentBtn px-5 py-2 rounded hover:bg-transparent hover:border hover:border-white">
                     Wishlist
                   </button>
-                  <button className="bg-yellow-500 px-5 py-2 rounded-lg text-black hover:text-yellow-500 hover:bg-transparent hover:border hover:border-yellow-500">
+                  <button
+                    className="bg-yellow-500 px-5 py-2 rounded-lg text-black hover:text-yellow-500 hover:bg-transparent hover:border hover:border-yellow-500"
+                    onClick={() => router.push(`/home/stream?id=${id}`)}
+                  >
                     Watch Now
                   </button>
                 </div>
@@ -85,6 +90,9 @@ const Page = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Stream />
       </div>
     </section>
   );
