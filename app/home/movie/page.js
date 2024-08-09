@@ -37,7 +37,7 @@ const Page = () => {
         </div>
         <div className="py-6 ps-4 pb-2">
           <h3 className="font-semibold text-3xl">Top Rated Movies</h3>
-          <div className="py-5 gap-8 grid grid-cols-4">
+          <div className="py-5 gap-3 grid grid-cols-2 md:grid-cols-4 md:gap-5">
             {state?.results?.map((el) => (
               <div key={el?.id}>
                 <MoviePosterComp data={el} />

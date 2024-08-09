@@ -13,12 +13,12 @@ const MoviePoster = ({ data }) => {
         backgroundColor: "#1e1818b3",
         backgroundBlendMode: "multiply",
         backgroundSize: "cover",
-        height: 300,
+        height: "250px",
       }}
-      className="rounded-2xl w-full p-5 flex flex-col justify-between"
+      className="rounded-2xl w-full p-5 flex flex-col justify-between md:h-[300px] "
     >
       <div>
-        <h1 className="font-semibold text-4xl">{data?.title}</h1>
+        <h1 className="font-semibold sm:text-3xl ">{data?.title}</h1>
       </div>
       <div className="flex justify-between items-center">
         <button className="transParentBtn px-4 py-2 font-semibold">

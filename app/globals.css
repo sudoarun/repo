@@ -55,3 +55,13 @@ body {
 .rightSlidesCustomBtn > .splide__arrows > button > svg {
   fill: #eab308;
 }
+.splide__pagination {
+  bottom: 0 !important;
+}
+
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+.no-scroll-bar {
+  scrollbar-width: none;
+}

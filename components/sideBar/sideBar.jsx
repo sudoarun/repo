@@ -50,7 +50,7 @@ const SideBar = () => {
     },
   ];
   return (
-    <div className="h-screen bg-black text-white flex-auto">
+    <div className="h-full bg-black text-white flex-auto">
       <div className=" mb-5">
         <img src="/Logo.svg" className="ms-2" />
       </div>

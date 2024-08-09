@@ -27,13 +27,13 @@ const NavHome = () => {
           Anime
         </Link>
       </li>
-      <li>
+      {/* <li>
         <input
           style={{ background: "#21242D" }}
           className="rounded-md ps-2 py-2 outline-none"
           placeholder="Search"
         />
-      </li>
+      </li> */}
     </div>
   );
 };

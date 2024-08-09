@@ -33,16 +33,19 @@ const Page = () => {
     upComingMovies();
   }, []);
   return (
-    <section className="pt-8 bg-black">
-      <div className="flex justify-center">
-        <SideBar />
-        <div className="container flex-auto w-3/5 mb-3">
-          <div className="bg-black text-white px-4">
+    <section className="h-screen">
+      <div class="grid md:grid-cols-5 sm:grid-cols-1 h-full">
+        <div class="col-span-1 pt-8 hidden md:block">
+          <SideBar />
+        </div>
+
+        <div class="col-span-3 flex justify-center overflow-y-scroll pt-8 scroll-smooth no-scroll-bar">
+          <div className="bg-black text-white px-4 w-full">
             <div>
               <NavHome />
             </div>
             <div className="flex justify-center mt-3">
-              <Splide className="w-full customBtnCarousel px-3">
+              <Splide className="w-full customBtnCarousel px-0 sm:px-3">
                 {upcoming?.map((el) => (
                   <SplideSlide key={el.id}>
                     <MoviePoster data={el} />
@@ -52,7 +55,7 @@ const Page = () => {
             </div>
             <div>
               <h1 className="ms-4 my-6 text-2xl">Popular on Honey Movies</h1>
-              <div className="grid grid-cols-3 gap-5 ">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
                 {movies?.map((el) => (
                   <MovieCard key={el.id} data={el} />
                 ))}
@@ -60,7 +63,10 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <RightBar />
+
+        <div class="col-span-1 pt-8 hidden md:block">
+          <RightBar />
+        </div>
       </div>
     </section>
   );
