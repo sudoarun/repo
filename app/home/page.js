@@ -34,12 +34,12 @@ const Page = () => {
   }, []);
   return (
     <section className="h-screen">
-      <div class="grid md:grid-cols-5 sm:grid-cols-1 h-full">
-        <div class="col-span-1 pt-8 hidden md:block">
+      <div class="grid md:grid-cols-5 grid-cols-1  h-full">
+        <div class="col-span-1 pt-8 hidden md:block relative">
           <SideBar />
         </div>
 
-        <div class="col-span-3 flex justify-center overflow-y-scroll pt-8 scroll-smooth no-scroll-bar">
+        <div class="col-span-3 pt-8 ">
           <div className="bg-black text-white px-4 w-full">
             <div>
               <NavHome />
@@ -64,7 +64,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div class="col-span-1 pt-8 hidden md:block">
+        <div class="col-span-1 pt-8 hidden md:block relative">
           <RightBar />
         </div>
       </div>

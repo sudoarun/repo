@@ -13,7 +13,7 @@ const RightBar = () => {
     gap: "3.5rem",
   };
   return (
-    <div className="bg-black text-white w-full">
+    <div className="bg-black text-white w-full sticky top-8">
       <div className="flex items-center gap-2 justify-between pe-4 mt-2">
         <span className="transParentBtn p-3 cursor-pointer">
           <Bell />
